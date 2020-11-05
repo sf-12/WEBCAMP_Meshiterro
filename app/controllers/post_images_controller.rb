@@ -15,12 +15,13 @@ class PostImagesController < ApplicationController
 
   # 投稿一覧ページ
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.page(params[:page]).reverse_order
   end
 
   # 記事詳細ページ
   def show
     @post_image = PostImage.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   # 投稿データの削除

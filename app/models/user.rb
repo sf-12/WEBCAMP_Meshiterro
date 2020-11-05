@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # post_imageモデルを複数持ちうる。userモデルが消えたら紐づくpost_imageモデルも消す
+  # 他のモデルとの関係
   has_many :post_images, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
